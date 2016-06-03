@@ -6,7 +6,8 @@
   "main": "pack.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "bower": "node pack.js && git commit -a -m \"Release %npm_package_version%\" && git tag %npm_package_version% -a -m \"%npm_package_version%\" && git push && git pus --tags"
+    "bower:sh": "node pack.js && git commit -a -m \"Release $npm_package_version\" && git tag $npm_package_version -a -m \"$npm_package_version\" && git push && git push --tags",
+    "bower:cmd": "node pack.js && git commit -a -m \"Release %npm_package_version%\" && git tag %npm_package_version% -a -m \"%npm_package_version%\" && git push && git push --tags"
   },
   "repository": {
     "type": "git",
@@ -27,7 +28,7 @@
   "homepage": "https://github.com/fastbean-au/when-umd-disthack#readme",
   "devDependencies": {
     "bower": "^1.7.9",
-    "fs.extra": "^1.3.2",
+    "fs-extra": "^0.30.0",
     "when": "3.7.7"
   }
 }
