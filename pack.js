@@ -1,5 +1,12 @@
-console.log("Copying files for bower");
-require('fs.extra').copyRecursive('node_modules/when/dist/browser', 'when', (err) => {
+var fs = require('fs.extra');
+
+fs.rmrf('./when', function (err) {
+  if (err) {
+    throw err;
+  }
+});
+
+fs.copyRecursive('./node_modules/when/dist/browser', './when', function (err) {
   if (err) {
     throw err;
   }

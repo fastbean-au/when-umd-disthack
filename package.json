@@ -6,7 +6,7 @@
   "main": "pack.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "bower": "node pack.js"
+    "bower": "node pack.js && git commit -a -m \"Release %npm_package_version%\" && git tag %npm_package_version% -a -m \"%npm_package_version%\" && git push && git pus --tags"
   },
   "repository": {
     "type": "git",
