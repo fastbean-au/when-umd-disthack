@@ -1,0 +1,23 @@
+{
+  "name": "when-umd",
+  "main": [
+    "when/when.js",
+    "when/when.min.js",
+    "when/when.debugjs"
+  ],
+  "moduleType": "globals",
+  "description": "A lightweight Promises/A+ and when() implementation, plus other async goodies.",
+  "keywords": ["Promises/A+", "promises-aplus", "promise", "promises", "deferred", "deferreds", "when", "async", "asynchronous", "cujo"],
+  "homepage": "https://github.com/cujojs/when.git",
+  "authors": [
+    "Brian Cavalier <brian@hovercraftstudios.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/*.md",
+    "node_modules",
+    ".*",
+    "package.json",
+    "pack.js"
+  ]
+}

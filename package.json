@@ -1,0 +1,33 @@
+{
+  "name": "when-umd-disthack",
+  "version": "3.7.7",
+  "private": true,
+  "description": "This is a cheap hack to allow a Bower dist of when for the browser.",
+  "main": "pack.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bower": "node pack.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fastbean-au/when-umd-disthack.git"
+  },
+  "keywords": [
+    "when",
+    "whenjs",
+    "when.js",
+    "browser",
+    "umd"
+  ],
+  "author": "fastbean <fastbean_au@yahoo.com.au>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fastbean-au/when-umd-disthack/issues"
+  },
+  "homepage": "https://github.com/fastbean-au/when-umd-disthack#readme",
+  "devDependencies": {
+    "bower": "^1.7.9",
+    "fs.extra": "^1.3.2",
+    "when": "3.7.7"
+  }
+}
