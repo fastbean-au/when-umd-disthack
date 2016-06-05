@@ -7,9 +7,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rimraf when/*",
+    "update": "npm view when dist-tags.latest | npm version && npm view when dist-tags.latest | npm install --save when@=",
     "git-push": "git push && git push --tags",
-    "build:sh": "npm run clean && cp node_modues/when/dist/browser/* when && git commit -a -m \"Release $npm_package_version\" && git tag $npm_package_version -a -m \"$npm_package_version\" && npm run git-push",
-    "build:cmd": "npm run clean && copy node_modules\\when\\dist\\browser when && git commit -a -m \"Release %npm_package_version%\" && git tag %npm_package_version% -a -m \"%npm_package_version%\" && npm run git-push"
+    "build:sh": "npm run update && npm run clean && cp node_modues/when/dist/browser/* when && git commit -a -m \"Release $npm_package_version\" && git tag $npm_package_version -a -m \"$npm_package_version\" && npm run git-push",
+    "build:cmd": "npm run update npm run clean && copy node_modules\\when\\dist\\browser when && git commit -a -m \"Release %npm_package_version%\" && git tag %npm_package_version% -a -m \"%npm_package_version%\" && npm run git-push"
   },
   "repository": {
     "type": "git",
@@ -31,8 +32,9 @@
   "homepage": "https://github.com/fastbean-au/when-umd-disthack#readme",
   "devDependencies": {
     "bower": "^1.7.9",
-    "rimraf": "^2.5.2",
-    "when": "3.7.7"
+    "rimraf": "^2.5.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "when": "^3.7.7"
+  }
 }
