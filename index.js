@@ -26,6 +26,8 @@ const command = process.argv[2].toLowerCase();
     } else if (command === 'build') {
         execCommand('npm install --save when')
         .then(() => shell.cp('-Rf', 'node_modules/when/dist/browser/*', 'when'))
+        .then(() => execCommand('npm view when dist-tags.latest'))
+        .then((version) => execCommand(`git commit -a -m "Release ${version}""`))
         .catch((err) => {
             console.error(`ERROR: ${err}`);
             process.exit(1)}
