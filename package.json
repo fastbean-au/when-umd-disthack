@@ -2,15 +2,14 @@
   "name": "when-umd-disthack",
   "version": "3.7.7",
   "private": true,
-  "description": "This is a cheap hack to allow a Bower dist of when for the browser.",
+  "description": "This is a cheap hack to allow a Bower dist of when.js for the browser.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "rimraf when/*",
-    "update": "npm view when dist-tags.latest | npm version && npm view when dist-tags.latest | npm install --save when@=",
-    "git-push": "git push && git push --tags",
-    "build:sh": "npm run update && npm run clean && cp node_modues/when/dist/browser/* when && git commit -a -m \"Release $npm_package_version\" && git tag $npm_package_version -a -m \"$npm_package_version\" && npm run git-push",
-    "build:cmd": "npm run update npm run clean && copy node_modules\\when\\dist\\browser when && git commit -a -m \"Release %npm_package_version%\" && git tag %npm_package_version% -a -m \"%npm_package_version%\" && npm run git-push"
+    "clean": "node index.js clean",
+    "build": "node index.js build",
+    "release": "node index.js release",
+    "all": "node index.js clean build release"
   },
   "repository": {
     "type": "git",
@@ -32,7 +31,7 @@
   "homepage": "https://github.com/fastbean-au/when-umd-disthack#readme",
   "devDependencies": {
     "bower": "^1.7.9",
-    "rimraf": "^2.5.2"
+    "shelljs": "^0.7.0"
   },
   "dependencies": {
     "when": "^3.7.7"
