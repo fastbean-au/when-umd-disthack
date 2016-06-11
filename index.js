@@ -17,32 +17,35 @@ function execCommand (cmd) {
     return promise;
 }
 
-//process.argv.slice(2).forEach((command) => {
-//    command = command.toLowerCase();
-const command = process.argv[2].toLowerCase();
+let sequence = Promise.resolve();
+
+process.argv.slice(2).forEach((command) => {
+    command = command.toLowerCase();
     console.log(`*** Executing step '${command}'`);
     if (command === 'clean') {
-        shell.rm('-fr', 'when/*');
+        sequence = sequence.then(() => {
+            shell.rm('-fr', 'when/*');
+        });
     } else if (command === 'build') {
-        execCommand('npm install --save when')
-        .then(() => shell.cp('-Rf', 'node_modules/when/dist/browser/*', 'when'))
-        .then(() => execCommand('npm view when dist-tags.latest'))
-        .then((version) => execCommand(`git commit -a -m "Release ${version}""`))
-        .catch((err) => {
-            console.error(`ERROR: ${err}`);
-            process.exit(1)}
-        );
+        sequence = sequence.then(() => { 
+            execCommand('npm install --save when')
+            .then(() => shell.cp('-Rf', 'node_modules/when/dist/browser/*', 'when'))
+            .then(() => execCommand('npm view when dist-tags.latest'))
+            .then((version) => execCommand(`git commit -a -m "Release ${version}""`));
+        });
     } else if (command === 'release') {
-        execCommand('npm view when dist-tags.latest')
-        .then((version) => execCommand(`npm version ${version}`))
-        .then(() => execCommand(`git push`))
-        .then(() => execCommand('git push --tags'))
-        .catch((err) => {
-            console.error(`ERROR: ${err}`);
-            process.exit(1)}
-        );
+        sequence = sequence.then(() => { 
+            execCommand('npm view when dist-tags.latest')
+            .then((version) => execCommand(`npm version ${version}`))
+            .then(() => execCommand(`git push`))
+            .then(() => execCommand('git push --tags'))
+        });
     } else {
-        console.error(`ERROR: unknown command '${command}'`);
-        process.exit(1);
+        sequence.reject(`unknown command '${command}'`);
     }
-//});
+});
+
+sequence = sequence.catch((err) => {
+    console.error(`ERROR: ${err}`);
+    process.exit(1)}
+);
