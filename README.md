@@ -1,5 +1,7 @@
 # when-umd-disthack
 
+[![Build Status](https://snap-ci.com/fastbean-au/when-umd-disthack/branch/master/build_image)](https://snap-ci.com/fastbean-au/when-umd-disthack/branch/master)
+
 This is simply a nasty, dirty hack used as a stop-gap measure while an [issue with when.js](https://github.com/cujojs/when/issues/479) remains unresolved.
 
 This repo merely exists to allow a [Bower](http://bower.io/) package to meet this specific need to serve the requirements of UMD users of [when.js](https://github.com/cujojs/when).  The [when.js npm package](https://www.npmjs.com/package/when) is used to obtain the already browserified code that this then publishes for Bower as `when-umd`.
