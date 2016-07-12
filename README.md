@@ -1,6 +1,7 @@
 # when-umd-disthack
 
 [![Build Status](https://snap-ci.com/fastbean-au/when-umd-disthack/branch/master/build_image)](https://snap-ci.com/fastbean-au/when-umd-disthack/branch/master)
+[![Dependency Status](https://dependencyci.com/github/fastbean-au/docker-event-webhooks/badge)](https://dependencyci.com/github/fastbean-au/docker-event-webhooks)
 
 This is simply a nasty, dirty hack used as a stop-gap measure while an [issue with when.js](https://github.com/cujojs/when/issues/479) remains unresolved.
 
